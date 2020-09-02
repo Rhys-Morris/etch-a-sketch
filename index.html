@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Etch-a-sketch</title>
+        <link rel="stylesheet" href="build/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container">
+
+        </div>
+    </body>
+    <script>
+        let container = document.querySelector("#container");
+        let gridDimensions = 25;
+
+        // TO DO - make dimensions adjustable
+
+        for (let i = 0; i < (100 * 100); i++) {
+            let gridDiv = document.createElement('div');
+            gridDiv.style["background-color"] = "skyblue"; // For test purposes;
+            gridDiv.style.height = `${70/100}rem`; // Set height and width of grid unit
+            gridDiv.style.width = `${70/100}rem`;
+            gridDiv.classList.add("grid-item");
+            container.appendChild(gridDiv);
+        }
+
+        document.addEventListener('mouseover', function (e) {
+            if (e.target.classList.contains("grid-item")) {
+                e.target.style["background-color"] = "#000";
+            }
+        });
+
+    </script>
+</html>

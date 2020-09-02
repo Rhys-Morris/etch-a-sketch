@@ -1,0 +1,23 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0; }
+
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 62.5%;
+  font-weight: 400;
+  box-sizing: border-box; }
+
+#container {
+  border: 1px solid #000;
+  height: 70rem;
+  width: 70rem;
+  margin: 10vh auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start; }
+
+.active {
+  background-color: black; }
