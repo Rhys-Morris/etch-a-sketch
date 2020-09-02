@@ -6,28 +6,60 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div id="container">
-
+        <h1 class="heading-1">Etch-A-Sketch Playground</h1>
+        <h2 class="heading-2">Draw what you can imagine!</h2>
+        <div class="tools">
+            <button class="btn" id="grid-size">Grid Size</button>
+            <button class="btn" id="sketch-color">Colour</button>
+            <button class="btn" id="reset">Reset</button>
         </div>
+        <div id="container"></div>
     </body>
     <script>
         let container = document.querySelector("#container");
-        let gridDimensions = 25;
+        let gridDimensions = 30; // Default grid dimensions 30 * 30
 
-        // TO DO - make dimensions adjustable
-
-        for (let i = 0; i < (100 * 100); i++) {
-            let gridDiv = document.createElement('div');
-            gridDiv.style["background-color"] = "skyblue"; // For test purposes;
-            gridDiv.style.height = `${70/100}rem`; // Set height and width of grid unit
-            gridDiv.style.width = `${70/100}rem`;
-            gridDiv.classList.add("grid-item");
-            container.appendChild(gridDiv);
+        // Function to create a grid
+        function createGrid (size) {
+            container.innerHTML = '';
+            for (let i = 0; i < (size * size); i++) {
+                let gridDiv = document.createElement('div');
+                gridDiv.style["background-color"] = "#fff"; // For test purposes;
+                gridDiv.style.height = `${70/size}rem`; // Set height and width of grid unit
+                gridDiv.style.width = `${70/size}rem`;
+                gridDiv.classList.add("grid-item");
+                container.appendChild(gridDiv);
+            }
         }
 
+        // Create default grid
+        createGrid(gridDimensions);
+
+        // TO DO - START DRAW EFFECT ON CLICK
+
+        // Draw effect
         document.addEventListener('mouseover', function (e) {
             if (e.target.classList.contains("grid-item")) {
                 e.target.style["background-color"] = "#000";
+            }
+        });
+
+        // Create grid of user defined size
+        document.addEventListener('click', function (e) {
+            let gridSize;
+            if (e.target.id == "grid-size") {
+                while (typeof gridSize != "number" || gridSize < 4 || Number.isNaN(gridSize) == true) {
+                    gridSize = parseInt(prompt("Select new grid size"));
+                }
+                createGrid(gridSize);
+            }
+        });
+
+        // Reset grid to default
+        document.addEventListener('click', function (e) {
+            let gridSize;
+            if (e.target.id == "reset") {
+                createGrid(gridDimensions);
             }
         });
 

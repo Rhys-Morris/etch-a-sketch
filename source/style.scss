@@ -13,21 +13,52 @@ html {
     font-family: 'Roboto', sans-serif;
     font-size: 62.5%; // 1 rem = 10px;
     font-weight: 400;
+    color: #222;
+    text-align: center;
 
     box-sizing: border-box;
+    background-color: #c3edff;
 }
 
 #container {
     border: 1px solid #000;
     height: 70rem;
     width: 70rem;
-    margin: 10vh auto;
+    margin: 4rem auto 0 auto;
 
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
 }
 
-.active {
-    background-color: black;
+.tools {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    padding: 1rem 1.5rem;
+    font-size: 2rem;
+    background-color: green;
+    border: none;
+    color: #f2f2f2;
+    border-radius: .5rem;
+    outline: none;
+    margin-left: 1.5rem;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: lightgreen;
+}
+
+.heading-1 {
+    font-size: 4rem;
+    font-weight: 300;
+    margin: 2rem 0 1rem 0;
+}
+
+.heading-2 {
+    margin-bottom: 3rem;
+    font-size: 1.8rem;
 }
