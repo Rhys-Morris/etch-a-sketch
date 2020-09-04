@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1 class="heading-1">Etch-A-Sketch Playground</h1>
-        <h2 class="heading-2">Click on the canvas to begin!</h2>
+        <h2 class="heading-2">Click on the canvas to start and stop drawing!</h2>
         <div class="tools">
             <button class="btn" id="grid-size">Grid Size</button>
             <button class="btn" id="sketch-color">Colour</button>
@@ -18,11 +18,12 @@
     <script>
         let container = document.querySelector("#container");
         let gridDimensions = 30; // Default grid dimensions 30 * 30
+        let drawColor = "#000";
 
         // Function to create a grid
         function createGrid (size) {
             container.innerHTML = '';
-            for (let i = 0; i < (size * size); i++) {
+            for (let i = 0; i < (size * (size * 2)); i++) {
                 let gridDiv = document.createElement('div');
                 gridDiv.style["background-color"] = "#fff"; // For test purposes;
                 gridDiv.style.height = `${70/size}rem`; // Set height and width of grid unit
@@ -35,13 +36,12 @@
         // Create default grid
         createGrid(gridDimensions);
 
-        // TO DO - START DRAW EFFECT ON CLICK
 
         // Draw effect
         document.addEventListener('mouseover', function (e) {
             if (toggle == 0) { return }
             if (e.target.classList.contains("grid-item")) {
-                e.target.style["background-color"] = "#000";
+                e.target.style["background-color"] = drawColor;
             }
         });
 
@@ -58,10 +58,10 @@
 
         // Create grid of user defined size
         document.addEventListener('click', function (e) {
-            let gridSize;
             if (e.target.id == "grid-size") {
+                let gridSize;
                 while (typeof gridSize != "number" || gridSize < 4 || Number.isNaN(gridSize) == true) {
-                    gridSize = parseInt(prompt("Select new grid dimensions"));
+                    gridSize = parseInt(prompt("Select new grid size:\n(Default: 30 equal to a 30 x 60 grid)"));
                 }
                 createGrid(gridSize);
             }
@@ -72,7 +72,43 @@
             let gridSize;
             if (e.target.id == "reset") {
                 createGrid(gridDimensions);
+                drawColor = "#000"
             }
+        });
+
+        // Select a colour
+        document.addEventListener('click', function (e) {
+            if (e.target.id == "sketch-color") {
+            let choice;
+            let choiceOptions = ['blue', 'black', 'brown', 'green', 'red', 'yellow', 'orange'];
+            while (choiceOptions.indexOf(choice) == -1) {  
+                choice = prompt("Choose a colour:\n(red, blue, green, yellow, orange, black, brown")
+                .toLowerCase();
+            }
+            switch(choice) {
+                case "red":
+                  drawColor = "#f00";
+                  break;
+                case "blue":
+                  drawColor = "#00f";
+                  break;
+                case "green":
+                  drawColor = "#0f0";
+                  break;
+                case "yellow":
+                  drawColor = "#ff0";
+                  break;
+                case "orange":
+                  drawColor = "#ffa500";
+                  break;
+                case "brown":
+                  drawColor = "#654321";
+                  break;
+                case "black":
+                  drawColor = "#000";
+                  break;
+            }
+        }
         });
 
     </script>
