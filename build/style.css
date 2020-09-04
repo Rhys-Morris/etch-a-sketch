@@ -28,17 +28,21 @@ html {
 
 .btn {
   padding: 1rem 1.5rem;
+  width: 15rem;
   font-size: 2rem;
   background-color: green;
   border: none;
   color: #f2f2f2;
   border-radius: .5rem;
   outline: none;
-  margin-left: 1.5rem; }
+  margin-left: 1.5rem;
+  transition: .2s all; }
 
 .btn:hover {
   cursor: pointer;
-  background-color: lightgreen; }
+  background-color: #01c001;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translatey(-0.2rem); }
 
 .heading-1 {
   font-size: 4rem;

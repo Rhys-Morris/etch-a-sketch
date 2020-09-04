@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1 class="heading-1">Etch-A-Sketch Playground</h1>
-        <h2 class="heading-2">Draw what you can imagine!</h2>
+        <h2 class="heading-2">Click on the canvas to begin!</h2>
         <div class="tools">
             <button class="btn" id="grid-size">Grid Size</button>
             <button class="btn" id="sketch-color">Colour</button>
@@ -39,8 +39,20 @@
 
         // Draw effect
         document.addEventListener('mouseover', function (e) {
+            if (toggle == 0) { return }
             if (e.target.classList.contains("grid-item")) {
                 e.target.style["background-color"] = "#000";
+            }
+        });
+
+        // Toggle for turning on draw effect
+        toggle = 0;
+
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains("grid-item")) {
+                if (toggle == 0) {
+                    toggle = 1;
+                } else { toggle = 0; }
             }
         });
 
@@ -49,7 +61,7 @@
             let gridSize;
             if (e.target.id == "grid-size") {
                 while (typeof gridSize != "number" || gridSize < 4 || Number.isNaN(gridSize) == true) {
-                    gridSize = parseInt(prompt("Select new grid size"));
+                    gridSize = parseInt(prompt("Select new grid dimensions"));
                 }
                 createGrid(gridSize);
             }

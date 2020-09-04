@@ -16,6 +16,7 @@ html {
     color: #222;
     text-align: center;
 
+
     box-sizing: border-box;
     background-color: #c3edff;
 }
@@ -38,6 +39,7 @@ html {
 
 .btn {
     padding: 1rem 1.5rem;
+    width: 15rem;
     font-size: 2rem;
     background-color: green;
     border: none;
@@ -45,11 +47,14 @@ html {
     border-radius: .5rem;
     outline: none;
     margin-left: 1.5rem;
+    transition: .2s all;
 }
 
 .btn:hover {
     cursor: pointer;
-    background-color: lightgreen;
+    background-color: rgb(1, 192, 1);
+    box-shadow: 0 .5rem 1rem rgba(#000, .15);
+    transform: translatey(-.2rem);
 }
 
 .heading-1 {
